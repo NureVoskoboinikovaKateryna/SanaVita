@@ -1,0 +1,137 @@
+#content {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  color: #525252;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.search-wrapper {
+  width: 300px;
+  max-width: 100%;
+}
+
+.form-control-inp {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #b3b3b3;
+  transition: border-color 0.2s ease-in-out;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+.form-control-inp:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.patients-table thead tr {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+}
+
+.patients-table th {
+  padding: 12px 15px;
+  border-bottom: 1px solid #b3b3b3;
+  font-weight: 500;
+}
+
+.patients-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #b3b3b3;
+  font-weight: 400;
+}
+
+.patients-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.patients-table tbody tr:hover {
+  background-color: #d1e7dd;
+  cursor: pointer;
+}
+
+.patients-table a {
+  color: #525252;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.patients-table a:hover {
+  text-decoration: underline;
+}
+
+.no-results {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .patients-table,
+  .patients-table thead,
+  .patients-table tbody,
+  .patients-table th,
+  .patients-table td,
+  .patients-table tr {
+    display: block;
+  }
+  
+  .patients-table thead tr {
+    display: none;
+  }
+
+  .patients-table tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #4CAF50;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  .patients-table tbody td {
+    padding-left: 50%;
+    position: relative;
+    text-align: left;
+  }
+
+  .patients-table tbody td::before {
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #4CAF50;
+  }
+
+  .patients-table tbody td:nth-of-type(1)::before {
+    content: "Пацієнт";
+  }
+  .patients-table tbody td:nth-of-type(2)::before {
+    content: "Останній запис";
+  }
+  .patients-table tbody td:nth-of-type(3)::before {
+    content: "Кількість записів";
+  }
+}

@@ -1,0 +1,101 @@
+<form #form="ngForm" (submit)="onSubmit()" class="patient-register-form">
+  <div class="form-grid">
+    <!-- Ліва колонка -->
+    <div class="column">
+      <div class="form-group">
+        <label for="nameInput">{{ 'FORM.NAME' | translate }}</label>
+        <input #name="ngModel" name="name" [(ngModel)]="registrationData.name" type="text" id="nameInput" required />
+        <div *ngIf="name.invalid && name.touched" class="error-text">{{ 'FORM.ENTER_NAME' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastNameInput">{{ 'FORM.LAST_NAME' | translate }}</label>
+        <input #lastName="ngModel" name="lastName" [(ngModel)]="registrationData.lastName" type="text" id="lastNameInput" required />
+        <div *ngIf="lastName.invalid && lastName.touched" class="error-text">{{ 'FORM.ENTER_LAST_NAME' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="middleNameInput">{{ 'FORM.MIDDLE_NAME' | translate }}</label>
+        <input #middleName="ngModel" name="middleName" [(ngModel)]="registrationData.middleName" type="text" id="middleNameInput"/>
+      </div>
+
+      <div class="form-group">
+        <label for="genderSelect">{{ 'FORM.GENDER' | translate }}</label>
+        <select #gender="ngModel" class="inp-select" name="gender" [(ngModel)]="registrationData.gender" id="genderSelect" required>
+          <option value="" disabled selected>{{ 'FORM.GENDER_CHOOSE' | translate }}</option>
+          <option value="F">{{ 'FORM.WOMAN' | translate }}</option>
+          <option value="M">{{ 'FORM.MAN' | translate }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ageInput">{{ 'FORM.AGE' | translate }}</label>
+        <input #age="ngModel" name="age" [(ngModel)]="registrationData.age" type="number" id="ageInput" required min="5" max="100" />
+        <div *ngIf="age.invalid && age.touched" class="error-text">{{ 'FORM.AGE_ERROR' | translate }}</div>
+      </div>
+    </div>
+
+    <!-- Права колонка -->
+    <div class="column">
+      <div class="form-group">
+        <label for="hospitalSelect">{{ 'FORM.HOSPITAL' | translate }}</label>
+        <select #companyId="ngModel" class="inp-select" name="companyId" [(ngModel)]="registrationData.companyId" id="hospitalSelect" required>
+          <option value="" disabled selected>{{ 'FORM.HOSPITAL_CHOOSE' | translate }}</option>
+          <option *ngFor="let company of companies" [value]="company.companyId">{{ company.companyName }}</option>
+        </select>
+        <div *ngIf="companyId.invalid && companyId.touched" class="error-text">{{ 'FORM.HOSPITAL_ERROR' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="bloodTypeSelect">{{ 'FORM.BLOOD_T' | translate }}</label>
+        <select #bTypeId="ngModel" class="inp-select" name="bTypeId" [(ngModel)]="registrationData.bTypeId" id="bloodTypeSelect" required>
+          <option value="" disabled selected>{{ 'FORM.BLOOD_T_CHOOSE' | translate }}</option>
+          <option *ngFor="let bt of bloodTypes" [value]="bt.bloodTypeId">{{ bt.typeName }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="middleNameInput3">{{ 'FORM.HEIGHT' | translate }}</label>
+        <input #height="ngModel" name="height" [(ngModel)]="registrationData.height" type="number" id="middleNameInput3" required min="5" max="300" />
+        <div *ngIf="height.invalid && height.touched" class="error-text">{{ 'FORM.HEIGHT_ERROR' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumberInput">{{ 'FORM.PHONE_NUMBER' | translate }}</label>
+        <input #phoneNumber="ngModel" name="phoneNumber" [(ngModel)]="registrationData.phoneNumber" type="tel" id="phoneNumberInput" />
+      </div>
+
+      <div class="form-group">
+        <label for="middleNameInput1">{{ 'FORM.ADRESS' | translate }}</label>
+        <input #address="ngModel" name="address" [(ngModel)]="registrationData.address" type="text" id="middleNameInput1"/>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Нижні поля -->
+  <div class="form-bottom">
+    <div class="form-group">
+      <label for="emailInput">{{ 'FORM.EMAIL' | translate }}</label>
+      <input #email="ngModel" name="email" [(ngModel)]="registrationData.email" type="email" id="emailInput" required />
+      <div *ngIf="email.invalid && email.touched" class="error-text">{{ 'FORM.ENTER_VALID_EMAIL' | translate }}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="passwordInput">{{ 'FORM.PASSWORD' | translate }}</label>
+      <input #password="ngModel" name="password" [(ngModel)]="registrationData.password" type="password" id="passwordInput" required minlength="8" />
+      <div *ngIf="password.invalid && password.touched" class="error-text">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPasswordInput">{{ 'FORM.CONFIRM_PASSWORD' | translate }}</label>
+      <input #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="registrationData.confirmPassword" type="password" id="confirmPasswordInput" required minlength="8" />
+      <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="error-text">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+      <div *ngIf="registrationData.password !== registrationData.confirmPassword && confirmPassword.touched" class="error-text">{{ 'FORM.PASSWORDS_NOT_MATCH' | translate }}</div>
+    </div>
+
+    <button type="submit" class="submit-button">
+      {{ createView ? ('FORM.CREATE_DOCTOR' | translate) : ('FORM.REGISTER' | translate) }}
+    </button>
+  </div>
+</form>

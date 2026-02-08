@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="loaded; else stillLoading">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>{{ 'FORM.DOCTOR_CHOOSE' | translate }}</h2>
+  </div>
+
+  <input type="text" class="form-control-inp" [formControl]="searchControl" placeholder="...">
+
+  <div class="list-group">
+    <button *ngFor="let doctor of filteredDoctors"
+            (click)="openChat(doctor.id)"
+            class="list-group-item list-group-item-action">
+      {{ doctor.name }}
+    </button>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

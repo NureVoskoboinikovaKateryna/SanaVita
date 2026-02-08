@@ -1,0 +1,249 @@
+<app-header></app-header>
+
+<div class="main-body" *ngIf="userLoaded; else stillLoading">
+  <div class="row gutters-sm">
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="profile-center">
+            <img src="assets/images/avatar.png" alt="Admin" class="profile-img">
+            <div class="profile-info">
+              <h4>{{ user.applicationUser.name }}</h4>
+              <p class="text-secondary mb-1">{{ user.companyName }}</p>
+              <p class="text-muted font-size-sm">{{ user.address }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <ul class="list-group list-group-flush" *ngIf="statsLoaded">
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">{{ 'PROFILE.MEAS' | translate }}</h6>
+            <span class="text-secondary">{{ stats.measurementsLastMonth }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">{{ 'PROFILE.TEMP' | translate }}</h6>
+            <span class="text-secondary">{{ stats.temp }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">{{ 'PROFILE.WEIGHT' | translate }}</h6>
+            <span class="text-secondary">{{ stats.weight }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">{{ 'PROFILE.PULSE' | translate }}</h6>
+            <span class="text-secondary">{{ stats.pulse }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <h6 class="mb-0">{{ 'PROFILE.BMI' | translate }} ({{ stats.BMI }})</h6>
+            <span class="text-secondary">{{ stats.BMIdesc }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div *ngIf="!editingProfile; else editProfile" class="card mb-3">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'PROFILE.FULLNAME' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.fullName }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.applicationUser.email }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'PROFILE.PHONE' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              +(38){{ user.applicationUser.phoneNumber }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'FORM.ADRESS' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.address }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'FORM.AGE' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.age }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'FORM.HEIGHT' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.height }}
+            </div>
+          </div>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col-sm-3">
+              <h6 class="mb-0">{{ 'FORM.BLOOD_T' | translate }}</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+              {{ user.bloodType.typeName }}
+            </div>
+          </div>
+          <hr *ngIf="!onlyView || allowedToEditAndDelete">
+          <div class="row align-items-center">
+            <div class="col-sm-12">
+              <a *ngIf="!onlyView || allowedToEditAndDelete" (click)="editingProfile = true;" class="btn btn-info">{{ 'PROFILE.EDIT' | translate }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #editProfile>
+        <app-edit-patient-profile (onSaveEvent)="savePatient($event)"
+                                  (onCancelEvent)="cancelEditing()"
+                                  [user]="user">
+        </app-edit-patient-profile>
+      </ng-template>
+
+      <div class="row gutters-sm">
+        <div class="col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h6 class="d-flex align-items-center mb-3">{{ 'PROFILE.SMALEST' | translate }}</h6>
+
+              <div class="progress-container mb-3">
+                <small>{{ 'PROFILE.TEMPER' | translate }}</small>
+                <div class="progress">
+                  <div class="progress-bar bg-primary"
+                       role="progressbar"
+                       [style.width.%]="(stats.minTemp * 50) / stats.tempNormal"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                  </div>
+                  <div class="vertical-line"></div>
+                  <div class="progress-label">{{ stats.tempNormal }}</div>
+                </div>
+              </div>
+
+              <small>{{ 'PROFILE.WEIG' | translate }}</small>
+              <div class="progress mb-3">
+                <div class="progress-bar bg-primary"
+                     role="progressbar"
+                     [style.width.%]="(stats.minWeight * 50) / stats.weightNormal"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                </div>
+                <div class="vertical-line"></div>
+                <div class="progress-label">{{ stats.weightNormal }}</div>
+              </div>
+
+              <small>{{ 'PROFILE.PULS' | translate }}</small>
+              <div class="progress mb-3">
+                <div class="progress-bar bg-primary"
+                     role="progressbar"
+                     [style.width.%]="(stats.minPulse * 50) / stats.pulseNormal"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                </div>
+                <div class="vertical-line"></div>
+                <div class="progress-label">{{ stats.pulseNormal }}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h6 class="d-flex align-items-center mb-3">{{ 'PROFILE.LARGEST' | translate }}</h6>
+
+              <div class="progress-container mb-3">
+                <small>{{ 'PROFILE.TEMPER' | translate }}</small>
+                <div class="progress">
+                  <div class="progress-bar bg-primary"
+                       role="progressbar"
+                       [style.width.%]="(stats.maxTemp * 50) / stats.tempNormal"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                  </div>
+                  <div class="vertical-line"></div>
+                  <div class="progress-label">{{ stats.tempNormal }}</div>
+                </div>
+              </div>
+
+              <small>{{ 'PROFILE.WEIG' | translate }}</small>
+              <div class="progress mb-3">
+                <div class="progress-bar bg-primary"
+                     role="progressbar"
+                     [style.width.%]="(stats.maxWeight * 50) / stats.weightNormal"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                </div>
+                <div class="vertical-line"></div>
+                <div class="progress-label">{{ stats.weightNormal }}</div>
+              </div>
+
+              <small>{{ 'PROFILE.PULS' | translate }}</small>
+              <div class="progress mb-3">
+                <div class="progress-bar bg-primary"
+                     role="progressbar"
+                     [style.width.%]="(stats.maxPulse * 50) / stats.pulseNormal"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                </div>
+                <div class="vertical-line"></div>
+                <div class="progress-label">{{ stats.pulseNormal }}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showModal" class="modal" tabindex="-1" role="dialog" (click)="closeModal()">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ 'PROFILE.WARN' | translate }}</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ 'PROFILE.WARN_P' | translate }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">{{ 'PROFILE.CANCEL' | translate }}</button>
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">{{ 'NOTIF.DELETE' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  Still loading...
+</ng-template>

@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+<div class="navbar">
+  <a (click)="activatePatients()">{{ 'ADMIN.PATIENTS' | translate }}</a>
+  <a (click)="activateDoctors()">{{ 'ADMIN.DOCTORS' | translate }}</a>
+  <a (click)="activateAdministrators()">{{ 'ADMIN.ADMIN' | translate }}</a>
+  <a (click)="activateCompanies()">{{ 'ADMIN.HOSPITALS' | translate }}</a>
+  <a (click)="activateAppointments()">{{ 'PROFILE.APPO_T' | translate }}</a>
+  <a (click)="activateNotifications()">{{ 'ADMIN.NOTIF' | translate }}</a>
+  <a (click)="activateMedicalRecords()">{{ 'ADMIN.MEDR' | translate }}</a>
+  <a (click)="activateMeasurements()">{{ 'ADMIN.MEAS' | translate }}</a>
+  <a (click)="activateMedicalDevices()">{{ 'ADMIN.MEDDEV' | translate }}</a>
+  <a (click)="activateMedicalDeviceTypes()">{{ 'ADMIN.MEDDEV_T' | translate }}</a>
+  <a (click)="activateManufacturers()">{{ 'ADMIN.MANUF' | translate }}</a>
+  <a (click)="activateSpecializations()">{{ 'ADMIN.SPEC' | translate }}</a>
+</div>
+
+
+<div class="content">
+  <app-admin-patients *ngIf="activated.patients"></app-admin-patients>
+  <app-admin-doctors *ngIf="activated.doctors"></app-admin-doctors>
+  <app-admin-companies *ngIf="activated.companies"></app-admin-companies>
+  <app-admin-specializations *ngIf="activated.specializations"></app-admin-specializations>
+  <app-admin-administrators *ngIf="activated.administrators"></app-admin-administrators>
+  <app-admin-medical-records *ngIf="activated.medicalRecords"></app-admin-medical-records>
+  <app-admin-notifications *ngIf="activated.notifications"></app-admin-notifications>
+  <app-admin-measurements *ngIf="activated.measurements"></app-admin-measurements>
+  <app-admin-medical-devices *ngIf="activated.medicalDevices"></app-admin-medical-devices>
+  <app-admin-medical-device-types *ngIf="activated.medicalDeviceTypes"></app-admin-medical-device-types>
+  <app-admin-appointments *ngIf="activated.appointments"></app-admin-appointments>
+  <app-admin-manufacturers *ngIf="activated.manufacturers"></app-admin-manufacturers>
+</div>
+
+<app-footer></app-footer>

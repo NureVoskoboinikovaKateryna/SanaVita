@@ -1,0 +1,210 @@
+<!-- <form #form="ngForm" (submit)="onSubmit()" id="registration">
+  <div class="form-group mb-4">
+    <label for="specializationSelect">{{ 'FORM.SPECIALIZATION' | translate }}</label>
+    <select #spezId="ngModel"
+            name="spezId"
+            [(ngModel)]="registrationData.spezId"
+            id="specializationSelect"
+            class="form-control"
+            required>
+      <option value="" disabled selected>{{ 'FORM.CHOOSE_SPECIALIZATION' | translate }}</option>
+      <option *ngFor="let spez of specializations;" value="{{ spez.specializationId }}">{{ spez.name }}</option>
+    </select>
+    <div *ngIf="spezId.invalid && spezId.touched" class="text-danger">{{ 'FORM.CHOOSE_SPECIALIZATION_ERROR' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="nameInput">{{ 'FORM.NAME' | translate }}</label>
+    <input #name="ngModel"
+           name="name"
+           [(ngModel)]="registrationData.name"
+           type="text"
+           id="nameInput"
+           class="form-control"
+           required />
+    <div *ngIf="name.invalid && name.touched" class="text-danger">{{ 'FORM.ENTER_NAME' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="lastNameInput">{{ 'FORM.LAST_NAME' | translate }}</label>
+    <input #lastName="ngModel"
+           name="lastName"
+           [(ngModel)]="registrationData.lastName"
+           type="text"
+           id="lastNameInput"
+           class="form-control"
+           required />
+    <div *ngIf="lastName.invalid && lastName.touched" class="text-danger">{{ 'FORM.ENTER_LAST_NAME' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="middleNameInput">{{ 'FORM.MIDDLE_NAME' | translate }}</label>
+    <input #middleName="ngModel"
+           name="middleName"
+           [(ngModel)]="registrationData.middleName"
+           type="text"
+           id="middleNameInput"
+           class="form-control" />
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="emailInput">{{ 'FORM.EMAIL' | translate }}</label>
+    <input #email="ngModel"
+           name="email"
+           [(ngModel)]="registrationData.email"
+           type="email"
+           id="emailInput"
+           class="form-control"
+           required />
+    <div *ngIf="email.invalid && email.touched" class="text-danger">{{ 'FORM.ENTER_VALID_EMAIL' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="passwordInput">{{ 'FORM.PASSWORD' | translate }}</label>
+    <input #password="ngModel"
+           name="password"
+           [(ngModel)]="registrationData.password"
+           type="password"
+           id="passwordInput"
+           class="form-control"
+           required
+           minlength="8" />
+    <div *ngIf="password.invalid && password.touched" class="text-danger">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="confirmPasswordInput">{{ 'FORM.CONFIRM_PASSWORD' | translate }}</label>
+    <input #confirmPassword="ngModel"
+           name="confirmPassword"
+           [(ngModel)]="registrationData.confirmPassword"
+           type="password"
+           id="confirmPasswordInput"
+           class="form-control"
+           required
+           minlength="8" />
+    <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="text-danger">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+    <div *ngIf="registrationData.password !== registrationData.confirmPassword && confirmPassword.touched" class="text-danger">{{ 'FORM.PASSWORDS_NOT_MATCH' | translate }}</div>
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="phoneNumberInput">{{ 'FORM.PHONE_NUMBER' | translate }}</label>
+    <input #phoneNumber="ngModel"
+           name="phoneNumber"
+           [(ngModel)]="registrationData.phoneNumber"
+           type="tel"
+           id="phoneNumberInput"
+           class="form-control" />
+  </div>
+
+  <button type="submit" class="submit-button">
+    <span *ngIf="!createView">{{ 'FORM.REGISTER' | translate }}</span>
+    <span *ngIf="createView">{{ 'FORM.CREATE_DOCTOR' | translate }}</span>
+  </button>
+</form> -->
+
+<form #form="ngForm" (submit)="onSubmit()" class="doctor-register-form">
+  <div class="form-grid">
+    <!-- Ліва колонка -->
+    <div class="column">
+      <div class="form-group">
+        <label for="specializationSelect">{{ 'FORM.SPECIALIZATION' | translate }}</label>
+        <select #spezId="ngModel"
+                name="spezId"
+                [(ngModel)]="registrationData.spezId"
+                id="specializationSelect"
+                class="inp-select"
+                required>
+          <option value="" disabled selected>{{ 'FORM.CHOOSE_SPECIALIZATION' | translate }}</option>
+          <option *ngFor="let spez of specializations;" value="{{ spez.specializationId }}">{{ spez.name }}</option>
+        </select>
+        <div *ngIf="spezId.invalid && spezId.touched" class="error-text">
+          {{ 'FORM.CHOOSE_SPECIALIZATION_ERROR' | translate }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nameInput">{{ 'FORM.NAME' | translate }}</label>
+        <input #name="ngModel"
+               name="name"
+               [(ngModel)]="registrationData.name"
+               type="text"
+               id="nameInput"
+               required />
+        <div *ngIf="name.invalid && name.touched" class="error-text">{{ 'FORM.ENTER_NAME' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastNameInput">{{ 'FORM.LAST_NAME' | translate }}</label>
+        <input #lastName="ngModel"
+               name="lastName"
+               [(ngModel)]="registrationData.lastName"
+               type="text"
+               id="lastNameInput"
+               required />
+        <div *ngIf="lastName.invalid && lastName.touched" class="error-text">{{ 'FORM.ENTER_LAST_NAME' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="middleNameInput">{{ 'FORM.MIDDLE_NAME' | translate }}</label>
+        <input #middleName="ngModel"
+               name="middleName"
+               [(ngModel)]="registrationData.middleName"
+               type="text"
+               id="middleNameInput" />
+      </div>
+    </div>
+
+    <!-- Права колонка -->
+    <div class="column">
+      <div class="form-group">
+        <label for="phoneNumberInput">{{ 'FORM.PHONE_NUMBER' | translate }}</label>
+        <input #phoneNumber="ngModel"
+               name="phoneNumber"
+               [(ngModel)]="registrationData.phoneNumber"
+               type="tel"
+               id="phoneNumberInput" />
+      </div>
+
+      <div class="form-group">
+        <label for="emailInput">{{ 'FORM.EMAIL' | translate }}</label>
+        <input #email="ngModel"
+               name="email"
+               [(ngModel)]="registrationData.email"
+               type="email"
+               id="emailInput"
+               required />
+        <div *ngIf="email.invalid && email.touched" class="error-text">{{ 'FORM.ENTER_VALID_EMAIL' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="passwordInput">{{ 'FORM.PASSWORD' | translate }}</label>
+        <input #password="ngModel"
+               name="password"
+               [(ngModel)]="registrationData.password"
+               type="password"
+               id="passwordInput"
+               required minlength="8" />
+        <div *ngIf="password.invalid && password.touched" class="error-text">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPasswordInput">{{ 'FORM.CONFIRM_PASSWORD' | translate }}</label>
+        <input #confirmPassword="ngModel"
+               name="confirmPassword"
+               [(ngModel)]="registrationData.confirmPassword"
+               type="password"
+               id="confirmPasswordInput"
+               required minlength="8" />
+        <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="error-text">{{ 'FORM.PASSWORD_MIN_LENGTH' | translate }}</div>
+        <div *ngIf="registrationData.password !== registrationData.confirmPassword && confirmPassword.touched" class="error-text">
+          {{ 'FORM.PASSWORDS_NOT_MATCH' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="submit-button">
+    {{ createView ? ('FORM.CREATE_DOCTOR' | translate) : ('FORM.REGISTER' | translate) }}
+  </button>
+</form>
+

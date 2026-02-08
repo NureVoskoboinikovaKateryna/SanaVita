@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="loaded; else stillLoading">
+  <div class="d-flex justify-content-between align-items-center flex-wrap">
+    <h2>{{ 'PROFILE.PAT_L' | translate }}</h2>
+    <div class="search-wrapper">
+      <input
+        type="text"
+        [ngModel]="search"
+        (ngModelChange)="searchPatient($event)"
+        class="form-control-inp"
+        placeholder="🔍..."
+      />
+    </div>
+  </div>
+
+  <table class="patients-table">
+    <thead>
+      <tr>
+        <th>Пацієнт</th>
+        <th>Останній запис</th>
+        <th>Кількість записів</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patientsFiltered" @fadeOut>
+        <td><a [routerLink]="['/pprofile', patient.patientId]">{{ patient.fullName }}</a></td>
+        <td>{{ patient.lastRecordDate }}</td>
+        <td>{{ patient.mRecords.length }}</td>
+      </tr>
+      <tr *ngIf="patientsFiltered.length === 0">
+        <td colspan="3" class="no-results">Пацієнтів не знайдено</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  Loading...
+</ng-template>

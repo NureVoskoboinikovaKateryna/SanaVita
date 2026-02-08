@@ -1,0 +1,53 @@
+#content {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.list-group-item {
+  font-size: 14px;
+  color: #525252;
+  font-weight: 400;
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #4CAF50;
+  color: #fff;
+  border: 1px solid #4CAF50;
+}
+
+.form-control-inp {
+  width: 100%;
+  padding: 6px 12px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-control-inp:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #525252;
+  margin-bottom: 12px;
+}
+
+.list-group-item.list-group-item-action {
+  padding: 6px 12px;
+}
+
+.list-group {
+  margin-top: 16px;
+}

@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3"><h6 class="mb-0">{{ 'FORM.PATIENT' | translate }}</h6></div>
+      <div class="col-sm-9 text-secondary">
+        <select [(ngModel)]="appointment.patientId" class="form-control" required>
+          <option value="" disabled selected>{{ 'FORM.PATIENT_CHOOSE' | translate }}</option>
+          <option *ngFor="let p of patients" [value]="p.patientId">{{ p.fullName }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row align-items-center">
+      <div class="col-sm-3"><h6 class="mb-0">{{ 'NOTIF.VISIT_DATE' | translate }}</h6></div>
+      <div class="col-sm-9 text-secondary">
+        <input type="datetime-local" class="form-control" [(ngModel)]="appointment.appointmentDate">
+      </div>
+    </div>
+    <hr>
+
+    <div class="row align-items-center">
+      <div class="col-sm-3"><h6 class="mb-0">{{ 'NOTIF.NOTES' | translate }}</h6></div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="appointment.notes">
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-info" (click)="saveAppointment()">{{ 'PROFILE.SAVE' | translate }}</button>
+        <button class="btn btn-info" style="margin-left: 15px;" (click)="cancel()">{{ 'PROFILE.CANCEL' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  <p>Loading...</p>
+</ng-template>

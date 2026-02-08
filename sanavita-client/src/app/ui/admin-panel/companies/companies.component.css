@@ -1,0 +1,68 @@
+.list-group-item {
+  border: 1px solid #525252;
+}
+
+.form-control {
+  border: 1px solid #b3b3b3;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #525252;
+}
+
+.create-button {
+  color: #525252;
+  font-size: 14px;
+  border: 1px solid #b3b3b3;
+  background-color: #fff;
+}
+
+.create-button:hover {
+  cursor: pointer;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  color: #fff;
+}
+
+h2 {
+  color: #525252;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 0.075);
+}
+
+.table-nowrap .table td, .table-nowrap .table th {
+  white-space: nowrap;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.75rem 1.25rem;
+  border-bottom-width: 1px;
+}
+
+table th {
+  font-weight: 500;
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+table td {
+  font-weight: 400;
+  color: #525252;
+  font-size: 14px;
+}
+
+.avatar.sm {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: .818125rem;
+}
+
+a {
+  font-weight: 400;
+  color: #525252;
+  font-size: 14px;
+}

@@ -1,0 +1,90 @@
+.measurements-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #525252;
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin: 16px 0px;
+  flex-wrap: wrap;
+}
+
+.form-select-inp {
+  flex: 1;
+  padding: 6px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 6px;
+  min-width: 200px;
+  border: 1px solid #b3b3b3;
+  transition: border-color 0.2s ease-in-out;
+  font-weight: 400;
+  color: #525252;
+}
+
+.form-select-inp:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.measurement-card {
+  background-color: #f8f9fa;
+  border-left: 6px solid #4CAF50;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 16px;
+  width: 210px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-header, span {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #525252;
+  }
+
+  .card-body p, strong {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #525252;
+
+    &.date {
+      font-size: 13px;
+      color: #888;
+    }
+  }
+}
+
+.date-s {
+  font-size: 13px !important;
+  color: #888 !important;
+}
+
+@media (max-width: 768px) {
+  .measurement-card {
+    width: 100%;
+  }
+}

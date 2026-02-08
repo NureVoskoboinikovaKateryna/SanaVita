@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<div class="measurements-container">
+  <h2 class="section-title">{{ 'PROFILE.MEAS_L' | translate }}</h2>
+
+  <div class="filters">
+    <select [(ngModel)]="selectedDevice" (change)="applyFilters()" class="form-select-inp">
+      <option value="">{{ 'PROFILE.ALL_DEVICES' | translate }}</option>
+      <option *ngFor="let type of deviceTypes" [value]="type">{{ type }}</option>
+    </select>
+
+    <select [(ngModel)]="sortOrder" (change)="applyFilters()" class="form-select-inp">
+      <option value="desc">{{ 'PROFILE.NEWEST' | translate }}</option>
+      <option value="asc">{{ 'PROFILE.OLDEST' | translate }}</option>
+    </select>
+  </div>
+
+  <div class="card-grid">
+    <div *ngFor="let measurement of filteredMeasurements" class="measurement-card">
+      <div class="card-header">
+        <span class="device-name">{{ measurement.deviceName }}</span>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>{{ 'PROFILE.MEAS_V' | translate }}:</strong> {{ measurement.measurementValue }}
+        </p>
+        <p class="date">
+          <strong class="date-s">{{ 'NOTIF.DATE' | translate }}:</strong> {{ measurement.measurementDate | date: 'dd.MM.yyyy HH:mm:ss' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

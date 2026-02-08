@@ -1,0 +1,99 @@
+<div class="card mb-3" *ngIf="loaded">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.LAST_NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.lastName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.name">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.MIDDLE_NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.middleName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Email</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.email">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'PROFILE.PHONE' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.phoneNumber">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.ADRESS' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.address">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.AGE' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.age">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.HEIGHT' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="changes.height">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.BLOOD_T' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <select #bTypeId="ngModel"
+                name="bTypeId"
+                [(ngModel)]="changes.bTypeId"
+                id="specializationSelect1"
+                class="form-control"
+                required>
+          <option value="" disabled selected>{{ 'FORM.BLOOD_T_CHOOSE' | translate }}</option>
+          <option *ngFor="let bt of bloodTypes;" value="{{ bt.bloodTypeId }}">{{ bt.typeName }}</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">{{ 'PROFILE.SAVE' | translate }}</a>
+        <a (click)="cancelChanges()" class="btn btn-info" style="margin-left: 15px;">{{ 'PROFILE.CANCEL' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>

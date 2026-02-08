@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="page-container">
+
+  <div class="about-container" id="about">
+    <div class="about-content">
+      <div class="flex-container">
+        <div class="flex-text">
+          <p>
+            <span class="highlight">SanaVita</span> - {{ 'HEADER.ABOUTMAIN' | translate }}
+          </p>
+        </div>
+        <div class="flex-image">
+          <img src="assets/images/10130.jpg" alt="SanaVita Image" class="responsive-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="features" class="features-container">
+    <h2 class="section-title">{{ 'HEADER.WHY' | translate }}</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="assets/images/monitoring.png" alt="Моніторинг" class="feature-icon">
+        <h3>{{ 'HEADER.F1' | translate }}</h3>
+        <p>{{ 'HEADER.F1T' | translate }}</p>
+      </div>
+      <div class="feature-card">
+        <img src="assets/images/records.png" alt="Медичні записи" class="feature-icon">
+        <h3>{{ 'HEADER.F2' | translate }}</h3>
+        <p>{{ 'HEADER.F2T' | translate }}</p>
+      </div>
+      <div class="feature-card">
+        <img src="assets/images/chat.png" alt="Чат з лікарем" class="feature-icon">
+        <h3>{{ 'HEADER.F3' | translate }}</h3>
+        <p>{{ 'HEADER.F3T' | translate }}</p>
+      </div>
+      <div class="feature-card">
+        <img src="assets/images/security.png" alt="Безпека" class="feature-icon">
+        <h3>{{ 'HEADER.F4' | translate }}</h3>
+        <p>{{ 'HEADER.F4T' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

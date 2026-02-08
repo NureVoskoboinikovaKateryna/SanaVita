@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h2>{{ 'ADMIN.MANUF' | translate }}</h2>
+  <button [routerLink]="['/create-manufacturer']" class="btn btn-info create-button">{{ 'FORM.CREATE_DOCTOR' | translate }}</button>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text"
+         [ngModel]="search"
+         (ngModelChange)="searchManufacturer($event)"
+         class="form-control"
+         placeholder="🔍...">
+</div>
+
+<div *ngIf="loaded; else stillLoading">
+  <div class="row">
+    <div class="col-12 mb-3 mb-lg-5">
+      <div class="card table-nowrap table-card">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead class="small text-uppercase bg-body text-muted">
+              <tr style="user-select: none;">
+                <th style="cursor:pointer;" (click)="sortById()">ID</th>
+                <th style="cursor:pointer;" (click)="sortByName()">{{ 'ADMIN.BLOOD_T_NAME' | translate }}</th>
+                <th style="cursor:pointer;" (click)="sortByCount()">{{ 'ADMIN.DEVCOUNT' | translate }}</th>
+                <th class="text-end">{{ 'ADMIN.ACTION' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let manf of manufacturersFilteredAndSorted" @fadeOut class="align-middle">
+                <td>
+                  <div class="h6 mb-0 lh-1">{{ manf.manufacturerId }}</div>
+                </td>
+                <td>{{ manf.name }}</td>
+                <td>{{ getCount(manf.manufacturerId) }}</td>
+                <td class="text-end">
+                  <div class="drodown">
+                    <a data-bs-toggle="dropdown" href="#" class="btn p-1" aria-expanded="false">
+                      <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a [routerLink]="['/put-manufacturer', manf.manufacturerId]" class="dropdown-item">{{ 'PROFILE.EDIT' | translate }}</a>
+                      <a style="cursor: pointer;" (click)="deleteManufacturer(manf.manufacturerId)" class="dropdown-item">{{ 'NOTIF.DELETE' | translate }}</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

@@ -1,0 +1,81 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.LAST_NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="administrator.lastName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="administrator.name">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.MIDDLE_NAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="administrator.middleName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">Email</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="email" class="form-control" [(ngModel)]="administrator.email">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.PASSWORD' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="password" class="form-control" [(ngModel)]="administrator.password">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.CONFIRM_PASSWORD' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="password" class="form-control" [(ngModel)]="administrator.confirmPassword">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.PHONE_NUMBER' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="administrator.phoneNumber">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">{{ 'PROFILE.SAVE' | translate }}</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">{{ 'PROFILE.CANCEL' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

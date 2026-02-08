@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h2>{{ 'ADMIN.PATIENTS' | translate }}</h2>
+  <button [routerLink]="['/create-patient']" class="btn btn-info create-button">{{ 'FORM.CREATE_DOCTOR' | translate }}</button>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text"
+         [ngModel]="search"
+         (ngModelChange)="searchPatient($event)"
+         class="form-control"
+         placeholder="🔍...">
+</div>
+
+<div *ngIf="loaded; else stillLoading">
+  <div class="row justify-content-center">
+    <div class="col-12 mb-3 mb-lg-5">
+      <div class="card table-nowrap table-card">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead class="small text-uppercase bg-body text-muted">
+              <tr style="user-select: none;">
+                <th style="cursor:pointer;" (click)="sortById()">ID</th>
+                <th style="cursor:pointer;" (click)="sortByFullName()">{{ 'FORM.NAME' | translate }}</th>
+                <th>Email</th>
+                <th style="cursor:pointer;" (click)="sortByCompanyName()">{{ 'FORM.HOSPITAL' | translate }}</th>
+                <th>{{ 'FORM.ADRESS' | translate }}</th>
+                <th style="cursor:pointer;" (click)="sortByAge()">{{ 'FORM.AGE' | translate }}</th>
+                <th style="cursor:pointer;" (click)="sortByBloodType()">{{ 'FORM.BLOOD_T' | translate }}</th>
+                <th style="cursor:pointer;" (click)="sortByHeight()">{{ 'FORM.HEIGHT' | translate }}</th>
+                <th style="cursor:pointer;" (click)="sortByGender()">{{ 'FORM.GENDER' | translate }}</th>
+                <th class="text-end">{{ 'ADMIN.ACTION' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let patient of patientsFilteredAndSorted" @fadeOut class="align-middle">
+                <td>
+                  <div class="h6 mb-0 lh-1">{{ patient.patientId }}</div>
+                </td>
+                <td><a [routerLink]="['/pprofile', patient.patientId]">{{ patient.fullName }}</a></td>
+                <td>{{ patient.applicationUser.email }}</td>
+                <td>{{ patient.company.companyName }}</td>
+                <td>{{ patient.address }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.bloodType.typeName }}</td>
+                <td>{{ patient.height }}</td>
+                <td>{{ patient.genderL }}</td>
+                <td class="text-end">
+                  <div class="drodown">
+                    <a data-bs-toggle="dropdown" href="#" class="btn p-1" aria-expanded="false">
+                      <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a [routerLink]="['/put-patient', patient.patientId]" class="dropdown-item">{{ 'PROFILE.EDIT' | translate }}</a>
+                      <a style="cursor: pointer;" (click)="deletePatient(patient.patientId)" class="dropdown-item">{{ 'NOTIF.DELETE' | translate }}</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

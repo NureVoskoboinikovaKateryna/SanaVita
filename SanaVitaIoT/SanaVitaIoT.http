@@ -1,0 +1,6 @@
+@SanaVitaIoT_HostAddress = http://localhost:5197
+
+GET {{SanaVitaIoT_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

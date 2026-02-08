@@ -1,0 +1,112 @@
+#content {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.form-control-inp {
+  flex: 1;
+  min-width: 200px;
+  padding: 6px 12px;
+  border: 1px solid #b3b3b3;
+  transition: border-color 0.2s ease-in-out;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+.form-control-inp:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.records-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medical-record {
+  border: 1px solid #4CAF50;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px #b3b3b3;
+  transition: transform 0.2s ease-in-out;
+}
+
+.medical-record:hover {
+  transform: scale(1.01);
+}
+
+.medical-record .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.diagnosis {
+  color: #4CAF50;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.visit-date {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.medical-record .body p {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+}
+
+a {
+  color: #525252;
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #525252;
+  margin: 0;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  font-size: 14px;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-outline-danger {
+  border: 1px solid #dc3545;
+  background-color: transparent;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}

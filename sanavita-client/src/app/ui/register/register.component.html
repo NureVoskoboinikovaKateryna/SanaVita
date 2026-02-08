@@ -1,0 +1,57 @@
+<!-- <app-header></app-header>
+<div id="registration">
+
+  <div class="form-outline mb-4">
+    <label class="form-label" for="userTypeSelect">{{ 'FORM.USER_T' | translate }}</label>
+    <select userType="ngModel"
+            name="userType"
+            [(ngModel)]="userType"
+            id="userTypeSelect"
+            class="form-control"
+            required>
+      <option value="" disabled selected>{{ 'FORM.USER_T_CHOOSE' | translate }}</option>
+      <option value="Patient">{{ 'FORM.PATIENT' | translate }}</option>
+      <option value="Doctor">{{ 'FORM.DOCTOR' | translate }}</option>
+    </select>
+  </div>
+
+  <ng-template [ngIf]="userType == 'Patient'">
+    <app-patient-register-form [createView]="createView" (onSubmitEvent)="registerPatient($event)"></app-patient-register-form>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'Doctor'">
+    <app-doctor-register-form [createView]="createView" (onSubmitEvent)="registerDoctor($event)"></app-doctor-register-form>
+  </ng-template>
+</div>
+
+<app-footer></app-footer> -->
+
+
+<app-header></app-header>
+
+<div id="registration-page">
+  <div class="user-type-container">
+    <label for="userTypeSelect" class="user-type-label">{{ 'FORM.USER_T' | translate }}</label>
+    <select
+      id="userTypeSelect"
+      name="userType"
+      [(ngModel)]="userType"
+      class="user-type-select"
+      required
+    >
+      <option value="" disabled selected>{{ 'FORM.USER_T_CHOOSE' | translate }}</option>
+      <option value="Patient">{{ 'FORM.PATIENT' | translate }}</option>
+      <option value="Doctor">{{ 'FORM.DOCTOR' | translate }}</option>
+    </select>
+  </div>
+
+  <ng-template [ngIf]="userType === 'Patient'">
+    <app-patient-register-form [createView]="createView" (onSubmitEvent)="registerPatient($event)"></app-patient-register-form>
+  </ng-template>
+
+  <ng-template [ngIf]="userType === 'Doctor'">
+    <app-doctor-register-form [createView]="createView" (onSubmitEvent)="registerDoctor($event)"></app-doctor-register-form>
+  </ng-template>
+</div>
+
+<app-footer></app-footer>
+

@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<div class="card mb-3" *ngIf="loaded; else stillLoading">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'ADMIN.HOSNAME' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="company.companyName">
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-3">
+        <h6 class="mb-0">{{ 'FORM.ADRESS' | translate }}</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        <input type="text" class="form-control" [(ngModel)]="company.address"/>
+      </div>
+    </div>
+    <hr>
+    <div class="row align-items-center">
+      <div class="col-sm-12">
+        <a (click)="saveChanges()" class="btn btn-info">{{ 'PROFILE.SAVE' | translate }}</a>
+        <a (click)="getBack()" class="btn btn-info" style="margin-left: 15px;">{{ 'PROFILE.CANCEL' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  Still Loading...
+</ng-template>

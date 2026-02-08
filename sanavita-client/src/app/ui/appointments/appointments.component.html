@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="!loading; else stillLoading">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>{{ 'PROFILE.APPO_T' | translate }}</h2>
+  </div>
+
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="filterDoctor"
+      placeholder="🔍..."
+      class="form-control-inp"
+    />
+    <input
+      type="date"
+      [(ngModel)]="filterDate"
+      class="form-control-inp"
+    />
+  </div>
+
+  <div class="records-container">
+    <div
+      *ngFor="let appointment of filteredAppointments()"
+      class="medical-record"
+      @fadeOut
+    >
+      <div class="header">
+        <h4 class="diagnosis">{{ appointment.notes || '...' }}</h4>
+        <span class="visit-date">{{ appointment.appointmentDate | date: 'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+      <div class="body">
+        <p>
+          <strong>{{ 'FORM.DOCTOR' | translate }}: </strong>
+          <a [routerLink]="['/dprofile', appointment.doctorId]">
+            {{ appointment.doctorFullName }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  <p>Loading...</p>
+</ng-template>

@@ -1,0 +1,5 @@
+{
+  "EnterPatientId": "Введiть ID пацiєнта:",
+  "EnterMedicalDeviceId": "Введiть ID медичного пристрою:",
+  "TemperatureOutOfRange": "Температура за межами допустимого: "
+}

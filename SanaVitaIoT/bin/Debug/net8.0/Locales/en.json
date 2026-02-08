@@ -1,0 +1,5 @@
+{
+  "EnterPatientId": "Enter Patient ID:",
+  "EnterMedicalDeviceId": "Enter Medical Device ID:",
+  "TemperatureOutOfRange": "Temperature out of range: "
+}

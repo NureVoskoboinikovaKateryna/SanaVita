@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div id="content" *ngIf="!loading; else stillLoading">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>{{ 'PROFILE.MEDR' | translate }}</h2>
+    <button [routerLink]="['/add-mrecord']" class="btn btn-info">
+      {{ 'PROFILE.ADD_MEDR' | translate }}
+    </button>
+  </div>
+
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="filterPatient"
+      placeholder="🔍..."
+      class="form-control-inp"
+    />
+    <input
+      type="date"
+      [(ngModel)]="filterDate"
+      class="form-control-inp"
+    />
+  </div>
+
+  <div class="records-container">
+    <div
+      *ngFor="let mrecord of filteredRecords()"
+      class="medical-record"
+      @fadeOut
+    >
+      <div class="header">
+        <h4 class="diagnosis">{{ mrecord.diagnosis }}</h4>
+        <span class="visit-date">{{
+          mrecord.visitDate | date: 'dd/MM/yyyy HH:mm:ss'
+        }}</span>
+      </div>
+      <div class="body">
+        <p>
+          <strong>{{ 'FORM.PATIENT' | translate }}: </strong>
+          <a [routerLink]="['/pprofile', mrecord.patientId]">{{
+            mrecord.patientFullName
+          }}</a>
+        </p>
+        <p><strong>{{ 'PROFILE.PRESCR' | translate }}:</strong> {{ mrecord.medications }}</p>
+      </div>
+      <div class="btns">
+        <button
+          (click)="editMRecord(mrecord.medicalRecordId)"
+          class="btn btn-outline-dark"
+        >
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button
+          (click)="deleteMRecord(mrecord.medicalRecordId)"
+          class="btn btn-outline-danger"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #stillLoading>
+  <p>Still loading...</p>
+</ng-template>

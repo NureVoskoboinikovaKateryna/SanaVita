@@ -1,0 +1,94 @@
+/* #registration {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+.form-control {
+  border: 1px solid #4CAF50;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+.form-outline {
+  margin-bottom: -24px !important;
+} */
+
+#registration-page {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.user-type-container {
+  text-align: center;
+}
+
+.user-type-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+  margin-bottom: 10px;
+}
+
+.user-type-select {
+  padding: 6px 40px 6px 12px;
+  width: 280px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px 18px;
+}
+
+.user-type-select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  background-color: #fff;
+}
+
+@media (max-width: 992px) {
+  #registration-page {
+    padding: 20px;
+  }
+
+  .user-type-select {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .user-type-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  #registration-page {
+    padding: 16px;
+  }
+
+  .user-type-select {
+    padding: 6px 36px 6px 10px;
+    font-size: 12px;
+  }
+
+  .user-type-label {
+    font-size: 12px;
+  }
+}
+

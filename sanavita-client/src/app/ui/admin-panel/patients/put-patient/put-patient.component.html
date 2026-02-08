@@ -1,0 +1,7 @@
+<app-header></app-header>
+<app-edit-patient-profile (onSaveEvent)="savePatient($event)"
+                          (onCancelEvent)="getBack()"
+                          [patientId]="patientId">
+</app-edit-patient-profile>
+
+<app-footer></app-footer>

@@ -1,0 +1,60 @@
+<div class="header-container">
+  <header class="header-bar">
+    <div class="logo">
+      <b>SanaVita</b>
+    </div>
+
+    <nav class="nav-links" *ngIf="!isLoggedIn">
+      <a class="nav-item" routerLink="/home">{{ 'HEADER.HOME' | translate }}</a>
+      <a class="nav-item" routerLink="/home" (click)="scrollToSection('features')">{{ 'HEADER.ABOUT' | translate }}</a>
+    </nav>
+
+    <!-- Користувач - Адмін -->
+    <div class="nav-links" *ngIf="isLoggedIn && userInfo.role == 'Адміністратор'">
+      <a class="nav-item" [routerLink]="['/admin-panel']">{{ 'HEADER.ADMIN_PANEL' | translate }}</a>
+    </div>
+
+    <!-- Користувач - Лікар -->
+    <div class="nav-links" *ngIf="isLoggedIn && userInfo.role == 'Лікар'">
+      <a class="nav-item" [routerLink]="['/dprofile', userId]">{{ 'HEADER.PROFILE' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/dnotifications']">{{ 'HEADER.NOTIFICATIONS' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/dmedical-records']">{{ 'HEADER.MEDICAL_RECORDS' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/dappointments']">{{ 'HEADER.APPO' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/dpatients']">{{ 'HEADER.PATIENTS' | translate }}</a>
+    </div>
+
+    <!-- Користувач - Пацієнт -->
+    <div class="nav-links" *ngIf="isLoggedIn && userInfo.role == 'Пацієнт'">
+      <a class="nav-item" [routerLink]="['/pprofile', userId]">{{ 'HEADER.PROFILE' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/notifications']">{{ 'HEADER.NOTIFICATIONS' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/medical-records']">{{ 'HEADER.MEDICAL_RECORDS' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/appointments']">{{ 'HEADER.APPO' | translate }}</a>
+      <a class="nav-item" [routerLink]="['/measurements']">{{ 'HEADER.MEASUREMENTS' | translate }}</a>
+    </div>
+
+    <!-- Не авторизований -->
+    <div class="right-section" *ngIf="!isLoggedIn">
+      <div class="auth-buttons">
+        <button [routerLink]="['/login']" class="custom-btn">{{ 'HEADER.LOGIN' | translate }}</button>
+        <button [routerLink]="['/register']" class="custom-btn">{{ 'HEADER.REGISTER' | translate }}</button>
+      </div>
+
+      <div class="language-switcher">
+        <span class="lang-text" (click)="switchLanguage('ua')">UA</span>
+        <span class="lang-text" (click)="switchLanguage('en')">EN</span>
+      </div>
+    </div>
+
+    <!-- Авторизований -->
+    <div class="right-section" *ngIf="isLoggedIn">
+      <div class="auth-buttons">
+        <button (click)="logout()" type="button" class="custom-btn">{{ 'HEADER.LOGOUT' | translate }}</button>
+      </div>
+
+      <div class="language-switcher">
+        <span class="lang-text" (click)="switchLanguage('ua')">UA</span>
+        <span class="lang-text" (click)="switchLanguage('en')">EN</span>
+      </div>
+    </div>
+  </header>
+</div>

@@ -1,0 +1,175 @@
+/* .form-control {
+  border: 1px solid #4CAF50;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+#registration {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+} */
+
+.patient-register-form {
+  max-width: 1000px;
+  margin: 10px auto;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px #b3b3b3;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #525252;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.column {
+  flex: 1 1 400px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+  color: #525252;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #525252;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.inp-select {
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #525252;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px 18px;
+}
+
+.inp-select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.error-text {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+@media (max-width: 992px) {
+  .form-grid {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .column {
+    flex: 1 1 100%;
+  }
+
+  .patient-register-form {
+    padding: 20px;
+    margin: 20px 16px;
+  }
+
+  .submit-button {
+    font-size: 13px;
+  }
+
+  input,
+  select,
+  .inp-select {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .patient-register-form {
+    padding: 16px 12px;
+    margin: 10px 8px;
+    border-radius: 12px;
+  }
+
+  .submit-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  input,
+  select,
+  .inp-select {
+    font-size: 12px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  .form-grid {
+    gap: 0px;
+  }
+}
